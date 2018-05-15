@@ -1,7 +1,7 @@
 <% @products.each do |product| %>
-  <h2><%= product["name"] %></h2>
+  <h2> <a href="/client/products/<%= product["id"] %>"><%= product["name"] %></a></h2>
   <img src="<%= product["image_url"]%>" alt="product image" height="150" width="150">
-  <h3>Item description:<%= product["description"] %></h3>
+  <h3>Item Description: <%= product["description"] %></h3>
   <h5>$ <%= product["price"] %></h5>  
   
 <% end %>
