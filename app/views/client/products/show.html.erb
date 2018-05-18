@@ -1,5 +1,7 @@
 <h2><%= @product["name"] %></h2>
-<h3>$ <%= @product["price"] %></h3>
+<h3>Price: <%= @product["formatted"]["price"] %></h3>
+<h6>Tax: <%= @product["formatted"]["tax"] %></h6>
+<h6>Total: <%= @product["formatted"]["total"] %></h6>
 <h4>Description: <%= @product["description"] %></h4>
 <img src="<%= @product['image_url'] %>">
 <br>
