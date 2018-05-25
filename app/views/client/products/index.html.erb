@@ -1,19 +1,17 @@
-<ul>
-  <li>
-    Sort By
-    <ul>
-      <li><a href="/client/products?sort_by=price">Price - Low to High</a></li>
-      <li><a href="/client/products?sort_by=price&&sort_order=desc">Price - High to Low</a></li>
-      <li><a href="/client/products?sort_by=name">Name A -> Z</a></li>
-      <li><a href="/client/products?sort_by=name&&sort_order=desc">Name Z -> A</a></li>
-    </ul>
-  </li>
-</ul>
-
+<br>
+<br>
 <%= form_tag "/client/products", method: :get do %>
   <input type="text" name="search" placeholder="Find Product">
   <input type="submit" value="Search">
 <% end %>
+<br>
+<select name="sorting_method" onchange="location = this.value;">
+  <option value="/">Sort Products By</option>
+  <option value="/client/products?sort_by=price">Price - Low to High</option>
+  <option value="/client/products?sort_by=price&&sort_order=desc">Price - High to Low</option>
+  <option value="/client/products?sort_by=name">Name - A to Z</option>
+  <option value="/client/products?sort_by=name&&sort_order=desc">Name - Z to A</option>
+</select>
 
 <% @products.each do |product| %>
   <h2> <a href="/client/products/<%= product["id"] %>"><%= product["name"] %></a></h2>
@@ -27,5 +25,5 @@
   <h5 class="<%= "red" if product["discounted"] %>"><%= product["formatted"]["price"] %></h5>  
   
   <h3>Item Description: <%= product["description"] %></h3>
-  <img src="<%= product["image_url"]%>" alt="product image" height="150" width="150">
+  <img src="<%= product["images"][0]["url"] %>" alt="product image" height="150" width="150">
 <% end %>

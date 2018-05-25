@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   get '/' => 'client/products#index'
+
+  get "/signup" => "users#new"
+  post "/users" => "users#create"
+  
   namespace :client do
     get '/products' => 'products#index'
     get 'products/new' => 'products#new'

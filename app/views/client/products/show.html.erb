@@ -3,7 +3,14 @@
 <h6>Tax: <%= @product["formatted"]["tax"] %></h6>
 <h6>Total: <%= @product["formatted"]["total"] %></h6>
 <h4>Description: <%= @product["description"] %></h4>
-<img src="<%= @product['image_url'] %>">
+
+<% @product["images"].each do |image| %>
+  <img src="<%= image["url"] %>" height="275" width="300">
+<% end %>
+
 <br>
+<h6>Supplier: <%= @product["supplier"]["name"] %></h6>
+
+
 <a href="/client/products/<%= @product['id'] %>/edit">Edit</a>
 <a href="/client/products/<%= @product['id'] %>" data-method="delete">Delete</a>
