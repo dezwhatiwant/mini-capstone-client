@@ -20,7 +20,7 @@
     <a href="/logout" data-method="delete">Log Out</a>
 
     <% if @jwt %>
-      <h5>Web Token: <%= @jwt %></h5>
+      <h5>You are signed in</h5>
     <% end %>
 
     <% flash.each do |name, message| %>

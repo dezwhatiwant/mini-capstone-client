@@ -1,7 +1,10 @@
-<h2>Order ID: <%= @order["id"] %></h2>
-<h6>User ID: <%= @order["user_id"] %></h3>
-<h6>Product ID: <%= @order["product_id"] %></h6>
-<h6>Quantity: <%= @order["quantity"] %></h6>
+<h1>Orders Show</h1>
+<h4>Customer #: 98088<%= @order["user_id"] %></h4>
+
+<h4>Order ID: 30024<%= @order["id"] %></h4>
+<h4>Product ID: <%= @order['product']['partial']['name'] %></h4>
+<h4>Price: <%= @order['product']['partial']['formatted']['price'] %> </h4>
+<h4>Quantity: <%= @order["quantity"] %></h4>
 <h4>Subtotal: <%= @order["subtotal"] %></h4>
 <h4>Tax: <%= @order["tax"] %></h4>
 <h4>Total: <%= @order["total"] %></h4>
