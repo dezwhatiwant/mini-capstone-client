@@ -1,4 +1,5 @@
 <h2><%= @product["name"] %></h2>
+<h3>Product ID: <%= @product["id"] %></h3>
 <h3>Price: <%= @product["formatted"]["price"] %></h3>
 <h6>Tax: <%= @product["formatted"]["tax"] %></h6>
 <h6>Total: <%= @product["formatted"]["total"] %></h6>
@@ -7,8 +8,19 @@
 <% @product["images"].each do |image| %>
   <img src="<%= image["url"] %>" height="275" width="300">
 <% end %>
-
 <br>
+
+<%= form_tag "/client/orders", method: :post do %>
+  <div>
+    Product ID: <input type="text" name="product_id">
+  </div>
+  <div>
+    Quantity: <input type="text" name ="quantity">
+  </div>
+  <input type="submit" value="Create Order">
+<% end %>
+
+
 <h6>Supplier: <%= @product["supplier"]["name"] %></h6>
 
 
