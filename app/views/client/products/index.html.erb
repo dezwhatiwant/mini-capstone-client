@@ -12,6 +12,17 @@
   <option value="/client/products?sort_by=name">Name - A to Z</option>
   <option value="/client/products?sort_by=name&&sort_order=desc">Name - Z to A</option>
 </select>
+<ul>
+  <li>
+    Categories
+    <ul>
+      <li><a href="/client/products?category=Cheap">Cheap</a></li>
+      <li><a href="/client/products?category=Expensive">Expensive</a></li>
+      <li><a href="/client/products?category=Indoor">Indoor</a></li>
+      <li><a href="/client/products?category=Outdoor">Outdoor</a></li>
+    </ul>
+  </li>
+</ul>
 
 <% @products.each do |product| %>
   <h2> <a href="/client/products/<%= product["id"] %>"><%= product["name"] %></a></h2>
