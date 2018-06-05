@@ -38,6 +38,9 @@ class Client::ProductsController < ApplicationController
     if response.code == 200
       flash[:success] = "Successfully Created Product"
       redirect_to "/client/products/#{ product["id"] }"
+    elsif response.code == 401
+      flash[:warning] = "You are not authorized to make a product"
+      redirect_to "/"
     else
       @errors = response.body["errors"]
       render 'new.html.erb'
@@ -76,6 +79,9 @@ class Client::ProductsController < ApplicationController
     if response.code == 200
       flash[:success] = "Successfully Updated Product"
       redirect_to "/client/products/#{@product[:id]}"
+    elsif response.code == 401
+      flash[:warning] = "You are not authorized to update a product"
+      redirect_to "/"
     else
       @errors = response.body['errors']
       render 'edit.html.erb'
@@ -86,9 +92,12 @@ class Client::ProductsController < ApplicationController
   def destroy
     product_id = params[:id]
     response = Unirest.delete("http://localhost:3000/api/products/#{product_id}")
-    flash[:success] = "Successfully Deleted Product"
-    redirect_to "/" 
+    if response.code == 200
+      flash[:success] = "Successfully Deleted Product"
+      redirect_to "/"
+    else
+      flash[:warning] = "You are not authorized to delete a product"
+      redirect_to "/"
+    end
   end
-
-
 end
