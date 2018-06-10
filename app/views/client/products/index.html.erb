@@ -1,10 +1,4 @@
 <br>
-<br>
-<%= form_tag "/client/products", method: :get do %>
-  <input type="text" name="search" placeholder="Find Product">
-  <input type="submit" value="Search">
-<% end %>
-<br>
 <select name="sorting_products" onchange="location = this.value;">
   <option value="/">Sort Products By</option>
   <option value="/client/products?sort_by=price">Price - Low to High</option>
@@ -20,18 +14,20 @@
   <option value="/client/products?category=Indoor">Indoor Use</option>
   <option value="/client/products?category=Outdoor">Outdoor Use</option>
 </select>
+<br>
+<br>
 
-<% @products.each do |product| %>
-  <h2> <a href="/client/products/<%= product["id"] %>"><%= product["name"] %></a></h2>
-  
-  <% if product["discounted"] %>
-    <h3>Discount Item!</h3>
-    <% else %>
-    <h3>Everyday Value!</h3>
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="card mb-5" style="width: 23rem;">
+      <img class="card-img-top" src="<%= product["images"][0]["url"] %>">
+      <div class="card-body">
+        <h5 class="card-title"><%= product["name"] %></h5>
+        <p class="card-text"><%= product["description"] %></p>
+      </div>
+      <div class="card-footer">
+        <a href="/client/products/<%= product["id"] %>" class="btn btn-primary">Product Info</a>
+      </div>
+    </div>
   <% end %>
-  
-  <h5 class="<%= "red" if product["discounted"] %>"><%= product["formatted"]["price"] %></h5>  
-  
-  <h3>Item Description: <%= product["description"] %></h3>
-  <img src="<%= product["images"][0]["url"] %>" alt="product image" height="150" width="150">
-<% end %>
+</div>
