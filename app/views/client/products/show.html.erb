@@ -24,3 +24,41 @@
 
 <a href="/client/products/<%= @product['id'] %>/edit">Edit</a>
 <a href="/client/products/<%= @product['id'] %>" data-method="delete">Delete</a>
+ 
+  <h4> Visits: </h4>
+ <ul>
+   <% @user["visits"].each do |visit|  %>
+     <li>
+       <%= visit["city"]["name"] + ", " + visit["country"]["name"] %>
+     </li>
+   <% end %>
+ </ul>
+
+<h4>Education:</h4>
+  <ul>
+    <% @student["educations"].each do |education| %>
+      <li>
+        <%= education["start_date"] %>
+      </li>
+      <li>
+        <%= education["end_date"] %>  
+      </li>  
+      <li>
+        <%= education["degree"] %>  
+      </li>
+      <li>
+        <%= education["university_name"] %>
+      </li>
+      <li>
+        <%= education["details"] %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h4>Skills:</h4>
+    <%= @student["skills"].each do |skill| %>
+      <li>
+        peskill["skill_name"]
+      </li>
+    <% end %>
+  
